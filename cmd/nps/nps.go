@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"log"
 	"os"
@@ -10,6 +11,9 @@ import (
 	"strings"
 	"sync"
 
+	"ehang.io/nps/lib/common"
+	"ehang.io/nps/lib/crypt"
+	"ehang.io/nps/lib/daemon"
 	"ehang.io/nps/lib/file"
 	"ehang.io/nps/lib/install"
 	"ehang.io/nps/lib/version"
@@ -18,13 +22,14 @@ import (
 	"ehang.io/nps/server/tool"
 	"ehang.io/nps/web/routers"
 
-	"ehang.io/nps/lib/common"
-	"ehang.io/nps/lib/crypt"
-	"ehang.io/nps/lib/daemon"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 
 	"github.com/kardianos/service"
+
+	caddy "github.com/caddyserver/caddy/v2"
+	caddyCMD "github.com/caddyserver/caddy/v2/cmd"
+	_ "github.com/caddyserver/caddy/v2/modules/standard"
 )
 
 var (
@@ -144,13 +149,20 @@ func main() {
 			}
 			return
 		case "update":
-			install.UpdateNps()
+			logs.Warning("customer build version, update is not support temporary")
+			//install.UpdateNps()
+			return
+		case "caddy":
+			os.Args = os.Args[1:]
+
+			caddyCMD.Main()
 			return
 		default:
 			logs.Error("command is not support")
 			return
 		}
 	}
+
 	_ = s.Run()
 }
 
@@ -181,7 +193,10 @@ func (p *nps) run() error {
 			logs.Warning("nps: panic serving %v: %v\n%s", err, string(buf))
 		}
 	}()
+
 	run()
+	caddyRun()
+
 	select {
 	case <-p.exit:
 		logs.Warning("stop...")
@@ -210,4 +225,17 @@ func run() {
 		timeout = 60
 	}
 	go server.StartNewServer(bridgePort, task, beego.AppConfig.String("bridge_type"), timeout)
+}
+
+func caddyRun() {
+	var caddyConfigPath string
+	if _, err := os.Stat(caddy.ConfigAutosavePath); errors.Is(err, os.ErrNotExist) {
+		caddyConfigPath = filepath.Join(common.GetRunPath(), "conf", "caddy.json")
+		logs.Info("loading caddy config from " + caddyConfigPath)
+	} else {
+		caddyConfigPath = caddy.ConfigAutosavePath
+	}
+
+	os.Args = append(os.Args, "run", "-config", caddyConfigPath)
+	go caddyCMD.Main()
 }

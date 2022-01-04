@@ -27,6 +27,10 @@
 		<zh-CN>域名解析</zh-CN>
 		<en-US>Host</en-US>
 	</lang>
+	<lang id="scheme-caddy">
+		<zh-CN>Caddy</zh-CN>
+		<en-US>Caddy</en-US>
+	</lang>
 	<lang id="scheme-tcp">
 		<zh-CN>TCP 隧道</zh-CN>
 		<en-US>TCP</en-US>
@@ -67,6 +71,18 @@
 	<lang id="page-clientedit">
 		<zh-CN>编辑客户端</zh-CN>
 		<en-US>Edit client</en-US>
+	</lang>
+	<lang id="page-caddylist">
+		<zh-CN>Caddy 配置列表</zh-CN>
+		<en-US>Caddy config list</en-US>
+	</lang>
+	<lang id="page-caddyadd">
+		<zh-CN>新增 Caddy 配置</zh-CN>
+		<en-US>Add caddy config</en-US>
+	</lang>
+	<lang id="page-caddyedit">
+		<zh-CN>编辑 Caddy 配置</zh-CN>
+		<en-US>Edit caddy config</en-US>
 	</lang>
 	<lang id="page-hostlist">
 		<zh-CN>主机列表</zh-CN>
@@ -547,6 +563,18 @@
 		<zh-CN>是</zh-CN>
 		<en-US>Yes</en-US>
 	</lang>
+	<lang id="word-upstreampath">
+		<zh-CN>上游服务地址</zh-CN>
+		<en-US>Upstream Service Address</en-US>
+	</lang>
+	<lang id="word-matchpath">
+		<zh-CN>HTTP 匹配路径</zh-CN>
+		<en-US>HTTP Match Path</en-US>
+	</lang>
+	<lang id="word-matchhost">
+		<zh-CN>HTTP 匹配域名</zh-CN>
+		<en-US>HTTP Match Domain</en-US>
+	</lang>
 	<lang id="word-">
 	</lang>
 
@@ -685,6 +713,18 @@
 	<lang id="info-unrestricted">
 		<zh-CN>留空表示不受限制</zh-CN>
 		<en-US>Empty means to be unrestricted</en-US>
+	</lang>
+	<lang id="info-upstreampath">
+		<zh-CN>127.0.0.1:3000</zh-CN>
+		<en-US>127.0.0.1:3000</en-US>
+	</lang>
+	<lang id="info-matchhost">
+		<zh-CN>example.com</zh-CN>
+		<en-US>example.com</en-US>
+	</lang>
+	<lang id="info-matchpath">
+		<zh-CN>/*</zh-CN>
+		<en-US>/*</en-US>
 	</lang>
 
 	<confirm>

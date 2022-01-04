@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-12 col-md-auto">
+        <div class="ibox float-e-margins">
+            <h3 class="ibox-title" langtag="page-caddyedit"></h3>
+            <div class="ibox-content">
+                <form class="form-horizontal">
+                    <input type="hidden" name="id" value="{{.c.ID}}">
+                    <div class="form-group" id="upstream_path">
+                        <label class="control-label font-bold" langtag="word-upstreampath"></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" value="{{.c.UpstreamPath}}" type="text" name="upstream_path" placeholder="" langtag="info-upstreampath">
+                        </div>
+                    </div>
+                    <div class="form-group" id="match_host">
+                        <label class="control-label font-bold" langtag="word-matchhost"></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" value="{{.c.MatchHost}}" type="text" name="match_host" placeholder="" langtag="info-matchhost">
+                        </div>
+                    </div>
+                    <div class="form-group" id="match_path">
+                        <label class="control-label font-bold" langtag="word-matchpath"></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" value="{{.c.MatchPath}}" type="text" name="match_path" placeholder="" langtag="info-matchpath">
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <button class="btn btn-success" type="button" onclick="submitform('add', '{{.web_base_url}}/caddy/edit', $('form').serializeArray())">
+                                <i class="fa fa-fw fa-lg fa-check-circle"></i> <span langtag="word-save"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,7 @@ func Init() {
 			beego.NSRouter("/", &controllers.IndexController{}, "*:Index"),
 			beego.NSAutoRouter(&controllers.IndexController{}),
 			beego.NSAutoRouter(&controllers.LoginController{}),
+			beego.NSAutoRouter(&controllers.CaddyController{}),
 			beego.NSAutoRouter(&controllers.ClientController{}),
 			beego.NSAutoRouter(&controllers.AuthController{}),
 		)
@@ -20,6 +21,7 @@ func Init() {
 		beego.Router("/", &controllers.IndexController{}, "*:Index")
 		beego.AutoRouter(&controllers.IndexController{})
 		beego.AutoRouter(&controllers.LoginController{})
+		beego.AutoRouter(&controllers.CaddyController{})
 		beego.AutoRouter(&controllers.ClientController{})
 		beego.AutoRouter(&controllers.AuthController{})
 	}
