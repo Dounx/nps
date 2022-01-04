@@ -1,0 +1,20 @@
+{
+    "apps": {
+        "http": {
+            "servers": {
+                "srv0": {
+                    "listen": [
+                        ":443"
+                    ],
+                    "routes": []
+                }
+            }
+        }
+    },
+    "admin": {
+        "listen": "localhost:2019",
+        "config": {
+            "persist": true
+        }
+    }
+}
