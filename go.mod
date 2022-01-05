@@ -8,7 +8,6 @@ require (
 	github.com/astaxie/beego v1.12.0
 	github.com/bradfitz/iter v0.0.0-20191230175014-e8f45d346db8 // indirect
 	github.com/c4milo/unpackit v0.0.0-20170704181138-4ed373e9ef1c
-	github.com/caddyserver/caddy v1.0.5
 	github.com/caddyserver/caddy/v2 v2.4.6
 	github.com/ccding/go-stun v0.0.0-20180726100737-be486d185f3d
 	github.com/dsnet/compress v0.0.1 // indirect
@@ -32,3 +31,5 @@ require (
 )
 
 replace github.com/astaxie/beego => github.com/exfly/beego v1.12.0-export-init
+
+replace github.com/caddyserver/caddy/v2 => github.com/dounx/caddy/v2 v2.4.7
