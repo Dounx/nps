@@ -77,10 +77,8 @@ func (s *CaddyController) Add() {
 		MatchPath:    s.getEscapeString("match_path"),
 	}
 
-	err = caddyClient.AddReverseProxy(c)
-	if err != nil {
-		s.AjaxErr(err.Error())
-	}
+	_ = caddyClient.AddReverseProxy(c)
+
 	s.AjaxOk("add success")
 }
 
@@ -110,20 +108,14 @@ func (s *CaddyController) Edit() {
 		c.MatchHost = s.getEscapeString("match_host")
 		c.MatchPath = s.getEscapeString("match_path")
 
-		err := caddyClient.UpdateReverseProxy(c)
-		if err != nil {
-			s.AjaxErr("save error")
-		}
+		_ = caddyClient.UpdateReverseProxy(c)
 	}
 	s.AjaxOk("save success")
 }
 
 func (s *CaddyController) Del() {
 	id := int64(s.GetIntNoErr("id"))
-	err := caddyClient.DeleteReverseProxy(id)
-	if err != nil {
-		s.AjaxErr("delete error")
-	}
+	_ = caddyClient.DeleteReverseProxy(id)
 
 	s.AjaxOk("delete success")
 }
